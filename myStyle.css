@@ -1,0 +1,11 @@
+.dash-container {
+	background: #d2d2d2;
+	padding: 15px 0px;
+}
+.dash-bg {
+	height: 40vh;
+	width: 100%;
+	background: #fff;
+	border-radius: 5px;
+	padding: 10px;
+}

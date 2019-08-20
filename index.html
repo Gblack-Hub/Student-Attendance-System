@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Homepage</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<style type="text/css">
+		.dash-container {
+			background: #d2d2d2;
+			padding: 15px 0px;
+		}
+		.dash-bg {
+			height: 40vh;
+			width: 100%;
+			background: #fff;
+			border-radius: 5px;
+			padding: 10px;
+		}
+	</style>
+	<!-- <style type="text/css" src="myStyle1.css"></style> -->
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/font/fontawesome/web-fonts-with-css/css/fontawesome-all.css">
+	
+	<!-- <link rel="stylesheet" type="text/css" href="../wowjs/css/libs/animate.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../wowjs/dist/wow.js"> -->
+</head>
+<body ng-app="myApp">
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark py-2">
+			<a href="#/!homepage" class="navbar-brand">G'Admin</a>
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#me">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			<div class="collapse navbar-collapse" id="me">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<!-- <a href="#/!homepage" class="nav-link">Home</a> -->
+					</li>
+					<li class="nav-item">
+						<a href="#!dashpage" class="nav-link">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a href="#!studentpage" class="nav-link">Students</a>
+					</li>
+					<li class="nav-item">
+						<a href="#!attendancepage" class="nav-link">Attendance</a>
+					</li>
+				</ul>
+				<div>
+					<ul class="navbar-nav">
+						<li class="nav-item"><i class="fa fa-user" style="color:#fff;"></i></li>
+						<li class="nav-item"><i class="fa fa-envelope" style="color:#fff;"></i></li>
+						<li class="nav-item"><i class="fa fa-bell" style="color:#fff;"></i></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<main class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- <div ng-view></div> -->
+				<ng-view></ng-view>
+			</div>
+		</div>
+		
+		<!-- <div class="row">
+			<div class="col-md-6" style="background:#000;height:40vh;margin-right: px">
+			
+			</div>
+			<div class="col-md-6" style="background:#ff0000;height:40vh;">
+				
+			</div>
+		</div> -->
+	</main>
+	<script type="text/javascript" src="../bootstrap/js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script> -->
+	<script type="text/javascript" src="../bootstrap/angular-route/angular-route.js"></script>
+	
+	<script type="text/javascript">
+		var a = angular.module("myApp", ["ngRoute"]);
+		a.config(function($routeProvider){
+			$routeProvider
+			.when("/",{
+				templateUrl : "homepage.htm"
+			})
+			.when("/dashpage",{
+				templateUrl : 'dashpage.htm',
+				controller : 'dashControl'
+			})
+			.when("/attendancepage",{
+				templateUrl : "attendancepage.htm",
+				controller : 'attControl'
+			})
+			.when("/studentpage",{
+				templateUrl : "studentpage.htm",
+				controller : 'studentControl'
+			});
+		});
+		// studentpage controller
+		a.controller("studentControl",function($scope){		
+			$scope.studentInfo = [];	//for students resgistration page
+			$scope.studentInfo2 = [];	//for attendancepage
+			$scope.studentInfo3 = [];	//for dashboard last 5 registered students
+			$scope.stat = '<button class="btn-success">+</button>';
+			$scope.add = function(){
+				$scope.studentInfo.push({firstname:this.fname,
+										 lastname:this.lname,
+										 matricno:this.matno,
+										 course:this.courses,
+										 phone:this.pnumber,
+										 email:this.emailadd});
+				$scope.studentInfo2.push({firstname:this.fname,
+										  lastname:this.lname,
+										  matricno:this.matno,
+										  status:$scope.stat
+										});
+				$scope.studentInfo3.push({firstname:this.fname,
+										  lastname:this.lname})
+				localStorage.setItem("Infos",JSON.stringify(this.studentInfo));
+				localStorage.setItem("Infos2",JSON.stringify(this.studentInfo2));
+				localStorage.setItem("Infos3",JSON.stringify(this.studentInfo3));
+				
+				this.fname = '';
+				this.lname = '';
+				this.matno = '';
+				this.courses = '';
+				this.pnumber = '';
+		    	this.emailadd = '';
+			}
+			$scope.checkInfo = function(){
+				this.studentInfo = JSON.parse(localStorage.getItem("Infos"));
+			}
+		});
+		//attendancepage controller
+		a.controller("attControl",function($scope){		
+			$scope.checkInfo2 = function(){
+				alert('go');
+				this.studentInfo2 = JSON.parse(localStorage.getItem("Infos2"));
+			}
+		});
+		//dashboard Controller
+		a.controller("dashControl",function($scope){
+			$scope.show = function(){
+				this.studentInfo3 = JSON.parse(localStorage.getItem("Infos3"));
+				// $scope.status = `<button class="btn-success">+</button>`;
+							 // <button class="btn-danger">-</button>`
+			}
+		});
+	</script>
+</body>
+</html>

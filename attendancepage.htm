@@ -1,0 +1,96 @@
+<main ng-controller="attControl">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 text-center bg-light pt-3 pb-3 mb-2 mt-2">
+				<!-- <div class=""> -->
+					ATTENDANCE
+				<!-- </div> -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="jumbotron">
+					<div class="row">
+						<div class="col-md-8">
+							<form class="form">
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<div class="input-group-text">
+												<i class="fa fa-search"></i>
+											</div>
+										</div>
+									<input type="" ng-model="searchName" class="form-control" name="" placeholder="search name here">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-4">
+							<div style="text-align:right;">
+								<button class="btn" ng-click="checkInfo2()">View Registered Students</button>
+							</div>
+						</div>
+					</div>
+					<table class="table table-striped" border="1">
+						<thead>
+							<tr class="text-center">
+								<th>SN</th>
+								<th>FIRSTNAME</th>
+								<th>LASTNAME</th>
+								<th>MATRIC NO</th>
+								<th>
+									<select>
+										<option><strong class="form-control">COURSE</strong></option>
+										<option>CSC 101</option>
+										<option>CSC 102</option>
+										<option>CSC 103</option>
+										<option>CSC 104</option>
+										<option>CSC 105</option>
+									</select>
+								</th>
+								<th colspan="2">STATUS</th>
+							</tr>
+						</thead>
+						<tbody id="retrieveList">
+							<tr ng-repeat="x in studentInfo2 | filter:searchName | orderBy:'firstname'">
+								<td>{{$index+1}}</td>
+								<td>{{x.firstname}}</td>
+								<td>{{x.lastname}}</td>
+								<td>{{x.matricno}}</td>
+								<td></td>
+								<td>{{status}}</td>
+								<!-- <td>
+									<button class="btn-success">+</button>
+									<button class="btn-danger">-</button>
+								</td> -->
+							</tr>
+<!-- 							<tr>
+								<td>{{$index+1}}</td>
+								<td>Oladiran</td>
+								<td>Olawale</td>
+								<td>
+									<select class="form-control">
+										<option value="">Select Course</option>
+										<option>CSC 101</option>
+										<option>CSC 102</option>
+										<option>CSC 103</option>
+										<option>CSC 104</option>
+										<option>CSC 105</option>
+									</select>
+								</td>
+								<td>
+									<input type="button" value="+" class="btn btn-success form-control" name=""></td>
+								<td>
+									<input type="button" value="-" class="btn btn-danger form-control" name="">
+								</td>
+							</tr> -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-4">
+				
+			</div>
+		</div>
+	</div>
+</main>
