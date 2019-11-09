@@ -1,104 +1,120 @@
-<main class="container-fluid" ng-controller="studentControl">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="text-center bg-light pt-3 pb-3 mb-2 mt-2">
-				STUDENT REGISTRATION FORM
-			</div>
-		</div>
+<main ng-controller="studentControl">
+	<div class="bg-secondary py-3 pl-3 mb-3">
+		<div class="text-white font-weight-bold">Students</div>
 	</div>
-	<div class="row">
-		<div class="col-md-4 jumbotron pt-3">
-			<form role="form" name="myForm" novalidate>
-				<div class="form-group">
-					<label>FIRSTNAME</label>
-					<input type="text" name="fname" ng-model="fname" class="form-control" required>
-					<span style="color:red" ng-show="myForm.fname.$dirty && myForm.fname.$invalid">
-						<span ng-show="myForm.fname.$error.required">Firstname is required.</span>
-					</span>
-				</div>
-				<div class="form-group">
-					<label>LASTNAME</label>
-					<input type="text" name="lname" ng-model="lname" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label>MATRIC NUMBER</label>
-					<input type="text" name="matno" ng-model="matno" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label>COURSE</label>
-					<input type="text" name="courses" ng-model="courses" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label>PHONE NUMBER</label>
-					<input type="text" name="pnumber" ng-model="pnumber" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label>E-MAIL ADDRESS</label>
-					<input type="email" name="emailadd" ng-model="emailadd" class="form-control" placeholder="e.g: example@email.com" required>
-					<span style="color:red" ng-show="myForm.emailadd.$dirty && myForm.emailadd.$invalid">
-						<span ng-show="myForm.emailadd.$error.required">Email is required.</span>
-						<span ng-show="myForm.emailadd.$error.email">Invalid email address.</span>
-					</span>
-				</div>
-				<button type="submit" ng-click="add('a1')" class="btn btn-primary btn-block" ng-disabled="myForm.fname.$dirty && myForm.fname.$invalid || myForm.emailadd.$dirty && myForm.emailadd.$invalid">SUBMIT</button>
-			</form>
-		</div>
-		<div class="col-md-8">
-			<div class="row">
-				<div class="col-md-8">
-					<form class="form">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fa fa-search"></i>
-									</div>
-								</div>
-							<input type="" ng-model="searchName" class="form-control" name="" placeholder="search name here">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header"><h6 class="text-uppercase">Add Student</h6></div>
+					<div class="card-body bg-light">
+						<form role="form" name="myForm" novalidate>
+							<div class="form-group">
+								<label>Firstname</label>
+								<input type="text" name="fname" ng-model="fname" class="form-control" required>
+								<span style="color:red" ng-show="myForm.fname.$dirty && myForm.fname.$invalid">
+									<span ng-show="myForm.fname.$error.required">Firstname is required.</span>
+								</span>
 							</div>
-						</div>
-					</form>
-				</div>
-				<div class="col-md-4">
-					<div style="text-align:right;">
-						<button class="btn" ng-click="checkInfo()">View Registered Students</button>
+							<div class="form-group">
+								<label>Lastname</label>
+								<input type="text" name="lname" ng-model="lname" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label>Matriculation Number</label>
+								<input type="text" name="matno" ng-model="matno" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label>Department</label>
+								<input type="text" name="department" ng-model="department" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label>Phone Number</label>
+								<input type="text" name="pnumber" ng-model="pnumber" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label>E-mail Address</label>
+								<input type="email" name="emailadd" ng-model="emailadd" class="form-control" placeholder="e.g: example@email.com" required>
+								<span style="color:red" ng-show="myForm.emailadd.$dirty && myForm.emailadd.$invalid">
+									<span ng-show="myForm.emailadd.$error.required">Email is required.</span>
+									<span ng-show="myForm.emailadd.$error.email">Invalid email address.</span>
+								</span>
+							</div>
+							<!-- <span class="alert alert-success">{{ resp }}</span> -->
+							<button type="submit" ng-click="add('a1')" class="btn btn-secondary btn-block" ng-disabled="myForm.fname.$dirty && myForm.fname.$invalid || myForm.emailadd.$dirty && myForm.emailadd.$invalid">SUBMIT</button>
+						</form>
 					</div>
 				</div>
-			</div>	
-			<table class="table table-striped" border="1">
-				<thead>
-					<tr>
-						<th>SN</th>
-						<th>FIRSTNAME</th>
-						<th>LASTNAME</th>
-						<th>MATRIC NUMBER</th>
-						<th>COURSE</th>
-						<th>PHONE NUMBER</th>
-						<th>E-MAIL ADDRESS</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="x in studentInfo | filter:searchName | orderBy:'firstname' | limitTo:10">
-						<td>{{$index+1}}</td>
-						<td>{{x.firstname}}</td>
-						<td>{{x.lastname}}</td>
-						<td>{{x.matricno}}</td>
-						<td>{{x.course}}</td>
-						<td>{{x.phone}}</td>
-						<td>{{x.email}}</td>
-					</tr>
-				</tbody>
-			</table>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-9">
+						<form class="form">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-search"></i>
+										</div>
+									</div>
+								<input type="" ng-model="searchName" class="form-control" name="" placeholder="search name here">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-3">
+						<div style="text-align:right;">
+							<button class="btn btn-secondary" ng-click="getStudents()">Students</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table table-responsive table-striped" border="1">
+							<thead class="text-center">
+								<tr>
+									<th>SN</th>
+									<th>FIRSTNAME</th>
+									<th>LASTNAME</th>
+									<th>MATRIC-NO.</th>
+									<th>DEPT</th>
+									<th>PHONE</th>
+									<th>E-MAIL</th>
+									<th colspan="2"><span><i class="fa fa-cog"></i></span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in studentList | filter:searchName | orderBy:'firstname' | limitTo:8">
+									<td>{{$index+1}}</td>
+									<td>{{x.firstname}}</td>
+									<td>{{x.lastname}}</td>
+									<td>{{x.matricno}}</td>
+									<td>{{x.department}}</td>
+									<td>{{x.phonenumber}}</td>
+									<td>{{x.email}}</td>
+									<td><button class="btn btn-primary btn-sm" ng-click="updateStudent(x.id)">
+										<span><i class="fa fa-edit"></i></span></button>
+									</td>
+									<td><button class="btn btn-danger btn-sm" ng-click="deleteStudent(x.id)">
+										<span><i class="fa fa-times"></i></span>
+									</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </main>
 <footer class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
-			
+
 		</div>
 		<div class="col-md-8">
-			<ul class="pagination pager">
+			<!-- <ul class="pagination pager">
 				<li class="page-item">
 					<a href="#" class="page-link">Prev</a>
 				</li>
@@ -120,7 +136,7 @@
 				<li class="page-item">
 					<a href="#" class="page-link" id="next">Next</a>
 				</li>
-			</ul>
+			</ul> -->
 		</div>
 	</div>
 </footer>

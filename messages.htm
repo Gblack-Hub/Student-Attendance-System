@@ -1,0 +1,68 @@
+<main ng-controller="messagesControl" style="height: 100vh;">
+	<div class="bg-secondary py-3 pl-3 mb-3">
+		<div class="text-white font-weight-bold">Messages</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+				<form novalidate>
+					<div class="card">
+						<div class="card-header d-flex flex-row bg-secondary p-1 pl-2">
+							<div class="mr-2"><img src="./images/img_avatar3.png" class="rounded-circle" style="height: 50px; width: 50px;"></div>
+							<div class="text-white font-weight-bold my-auto">receipents_name</div>
+						</div>
+						<div class="card-body p-2">
+							<div class="btn btn-secondary float-left mb-1" style="max-width: 70%;clear: both;">This is a demo message,</div>
+							<div class="btn btn-secondary float-right mb-1" style="max-width: 70%;clear: both;">Another demo message is here,</div>
+							<!-- <div class="btn btn-secondary mb-1">This is a demo message,</div>
+							<div class="btn btn-secondary float-right mb-1">Another demo message is here,</div>
+							<div class="btn btn-secondary mb-1">This is a demo message,</div>
+							<div class="btn btn-secondary float-right mb-1">Another demo message is here,</div>
+							<div class="btn btn-secondary mb-1">This is a demo message,</div>
+							<div class="btn btn-secondary float-right mb-1	">Another demo message is here,</div> -->
+						</div>
+						<div class="card-footer d-flex">
+							<div><textarea class="form-control w-100" ></textarea></div>
+							<div><button class="btn btn-secondary">Send</button></div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+				<button class="btn btn-secondary" ng-click="btn()">Click Me</button>
+			</div>
+		</div>
+	</div>
+</main>
+<footer class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+
+		</div>
+		<div class="col-md-8">
+			<ul class="pagination pager">
+				<li class="page-item">
+					<a href="#" class="page-link">Prev</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">1</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">2</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">3</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">4</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">5</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link" id="next">Next</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</footer>

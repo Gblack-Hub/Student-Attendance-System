@@ -1,0 +1,146 @@
+<main ng-controller="staffControl">
+	<div class="bg-secondary py-3 pl-3 mb-3">
+		<div class="text-white font-weight-bold">Staff</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header"><h6 class="text-uppercase">Add New Staff</h6></div>
+					<div class="card-body bg-light">
+						<form role="form" novalidate>
+							<div class="form-group">
+								<label>Firstname</label>
+								<input type="text" name="fname" ng-model="fname" class="form-control" required>
+								<span style="color:red" ng-show="myForm.fname.$dirty && myForm.fname.$invalid">
+									<span ng-show="myForm.fname.$error.required">Firstname is required.</span>
+								</span>
+							</div>
+							<div class="form-group">
+								<label>Lastname</label>
+								<input type="text" name="lname" ng-model="lname" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label>E-mail Address</label>
+								<input type="email" name="emailadd" ng-model="emailadd" class="form-control" placeholder="e.g: example@email.com" required>
+								<span style="color:red" ng-show="myForm.emailadd.$dirty && myForm.emailadd.$invalid">
+									<span ng-show="myForm.emailadd.$error.required">Email is required.</span>
+									<span ng-show="myForm.emailadd.$error.email">Invalid email address.</span>
+								</span>
+							</div>
+							<div class="form-group">
+								<label class="d-block">Gender</label>
+								Male: <input type="radio" ng-model="gender" value="male" required>
+								Female: <input type="radio" ng-model="gender" value="female" required>
+							</div>
+							<div class="form-group">
+								<label>Position</label>
+								<select class="form-control" ng-model="position">
+									<option ng-repeat="x in adminPositionList" value="{{x.id}}">{{ x.position }}</small>
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="btn btn-secondary btn-block text-left"> Choose Display Picture
+									<input type="file" style="display: none;" ng-model="staffPicture" name="">
+								</label>
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<input type="password" name="pwd" ng-model="pwd" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label>Phone Number</label>
+								<input type="text" name="pnumber" ng-model="pnumber" class="form-control" required>
+							</div>
+							<button type="submit" ng-click="add()" class="btn btn-secondary btn-block" ng-disabled="myForm.fname.$dirty && myForm.fname.$invalid || myForm.emailadd.$dirty && myForm.emailadd.$invalid">SUBMIT</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-9">
+						<form class="form">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-search"></i>
+										</div>
+									</div>
+									<input type="" ng-model="searchName" class="form-control" name="" placeholder="search name here">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-3">
+						<div style="text-align:right;">
+							<button class="btn btn-secondary" ng-click="getStaffs()">View Staffs</button>
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-responsive" border="1">
+					<thead>
+						<tr>
+							<th>SN</th>
+							<th>FIRSTNAME</th>
+							<th>LASTNAME</th>
+							<th>EMAIL</th>
+							<th>GENDER</th>
+							<th>POSITION</th>
+							<th>PHONE</th>
+							<th><span><i class="fa fa-cog"></i></span></th>
+							<!-- <th><span><i class="fa fa-cog"></i></span></th> -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="x in staffList | filter:searchName | orderBy:'firstname' | limitTo:10">
+							<td>{{$index+1}}</td>
+							<td>{{x.firstname}}</td>
+							<td>{{x.lastname}}</td>
+							<td>{{x.email}}</td>
+							<td>{{x.gender}}</td>
+							<td>{{x.position}}</td>
+							<td>{{x.phonenumber}}</td>
+							<td><a href="#!messages"><span><i class="fa fa-envelope"></i></span></a></td>
+							<!-- <td><button class="btn btn-danger py-1" ng-click="deleteStaff(x.id)">-</button></td> -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</main>
+<footer class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+
+		</div>
+		<div class="col-md-8">
+		<!-- 	<ul class="pagination pager">
+				<li class="page-item">
+					<a href="#" class="page-link">Prev</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">1</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">2</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">3</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">4</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link">5</a>
+				</li>
+				<li class="page-item">
+					<a href="#" class="page-link" id="next">Next</a>
+				</li>
+			</ul> -->
+		</div>
+	</div>
+</footer>

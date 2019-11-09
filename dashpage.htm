@@ -1,66 +1,57 @@
 <main ng-controller="dashControl">
+	<div class="bg-secondary py-3 pl-3 mb-3">
+		<div class="text-white font-weight-bold">Dashboard</div>
+	</div>
+
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="text-center bg-light pb-3 pt-3 mb-2 mt-2 h3 wow bounceInUp">
-					DASHBOARD
+			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+				<div class="jumbotron bg-light p-4">
+					Total Students
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+				<div class="jumbotron bg-light p-4">
+					Next Course
+				</div>
+			</div>
+
+			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+				<div class="jumbotron bg-light p-4">
+					Total
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+				<div class="jumbotron bg-light p-4">
+					Total
 				</div>
 			</div>
 		</div>
-		<div class="row dash-container">
-			<div class="col-md-6">
-				<div class="dash-bg">
-					List of last five students that registered
-					<div>
-						<button class="btn" ng-click="show()">Show</button>
-						<button class="btn btt" ng-click="show2()">Show2</button>
-					</div>
-					<table class="table table-striped table-hover" border="1">
-						<thead>
-							<tr>
-								<th>SN</th>
-								<th>FIRSTNAME</th>
-								<th>LASTNAME</th>
-								<!-- <th>MATRIC NUMBER</th>
-								<th>COURSE</th>
-								<th>PHONE NUMBER</th>
-								<th>E-MAIL ADDRESS</th> -->
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="x in studentInfo3 | orderBy:'firstname' | limitTo:5">
-								<td>{{$index+1}}</td>
-								<td>{{x.firstname}}</td>
-								<td>{{x.lastname}}</td>
-								<!-- <td>{{x.matricno}}</td>
-								<td>{{x.course}}</td>
-								<td>{{x.phone}}</td>
-								<td>{{x.email}}</td> -->
-							</tr>
-						</tbody>
-					</table>
+		<div class="row">
+			<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+				<div class="jumbotron bg-light">
+					<canvas id="myChart"></canvas>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="dash-bg">
-					Today's absentees
+			<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+				<div class="wow bounceInUp jumbotron bg-light">
+					<h1 class="display-5">Live</h1>
 				</div>
 			</div>
 		</div>
-		<div class="row dash-container">
-			<div class="col-md-6">
-				<div class="dash-bg">
-					Students that are never seen in class
+		<div class="row">
+			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+				<div class="jumbotron bg-light">
+					<h1 class="display-5">Info</h1>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="dash-bg">
-					Bar chart
+			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+				<div class="jumbotron bg-light">
+					<h1 class="display-5">Info</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 </main>
 <footer class="container-fluid">
-	
 </footer>
