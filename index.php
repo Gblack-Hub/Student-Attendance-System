@@ -51,12 +51,12 @@
 		<div><a href="#!students" class="nav-link"><span class="mr-2"><i class="fa fa-users"></i></span>Students</a></div>
 		<div><a href="#!attendance" class="nav-link"><span class="mr-2"><i class="fa fa-check-square"></i></span>Attendance</a></div>
 		<div><a href="#!viewattendance" class="nav-link"><span class="mr-2"><i class="fa fa-book"></i></span>View Attendance</a></div>
-		<div><a href="#!timetable" class="nav-link"><span class="mr-2"><i class="fa fa-table"></i></span>Timetable</a></div>
-		<div>
+		<!-- <div><a href="#!timetable" class="nav-link"><span class="mr-2"><i class="fa fa-table"></i></span>Timetable</a></div> -->
+		<!-- <div>
 			<a href="#!notifications" class="nav-link"><span class="mr-2"><i class="fa fa-bell"></i></span>Notifications
 				<span class="badge badge-danger"></span>
 			</a>
-		</div>
+		</div> -->
 		<div><a href="../api-angular/logout.php" class="nav-link"><span class="mr-2"><i class="fa fa-power-off"></i></span>Logout</a></div>
 	</div>
 	<span class="cursor-pointer open-bar text-white px-2 py-1 bg-secondary" onclick="openNav()">

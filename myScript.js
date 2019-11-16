@@ -52,20 +52,58 @@ a.config(function($routeProvider, $locationProvider){
   	// }
 });
 //dashboard Controller
-a.controller("dashControl",function($scope){
-	// alert('done');
-	var ctx = document.getElementById("myChart").getContext('2d');
-	
-	$scope.show = () => {
-		this.studentInfo3 = JSON.parse(localStorage.getItem("Infos3"));
+a.controller("dashControl", function($scope, $http){
+	// var ctx = document.getElementById("myChart").getContext('2d');
+	$scope.staffList;
+	$scope.studentList;
+	$scope.courseList;
+	$scope.notificationsList = [
+		'All staffs are enjoined to present their professional cerfiticates',
+		'Second Semester Examinations starts on 03/06/2018'
+	]
+
+	$scope.getStaffs = () => {
+		$http({
+			method: 'GET',
+			url: '../api-angular/getstaffs.php',
+		}).then(function (response) {
+			$scope.staffList = response.data;
+		}, function (response) {
+			console.log(response.data, response.status);
+		});
+	};
+	$scope.getStaffs();
+
+	$scope.getStudents = () => {
+		$http({
+			method: 'GET',
+			url: '../api-angular/getstudents.php',
+		}).then(function (response) {
+			$scope.studentList = response.data;
+		}, function (response) {
+			console.log(response.data, response.status);
+		});
 	}
+	$scope.getStudents();
+
+	$scope.getCourse = () => {
+		$http({
+			method: 'GET',
+			url: '../api-angular/getcourse.php',
+		}).then(function (response) {
+			$scope.courseList = response.data;
+		}, function (response) {
+			console.log(response.data, response.status);
+		});
+	};
+	$scope.getCourse();
 });
 // staffpage controller
 a.controller("staffControl", function($scope, $http){
 	$scope.staffList;
 
 	$scope.add = () => {
-		$scope.staffInfo = {firstname:$scope.fname, lastname:$scope.lname, email:$scope.emailadd, gender:$scope.gender,
+		$scope.staffInfo = { firstname:$scope.fname, lastname:$scope.lname, email:$scope.emailadd, gender:$scope.gender,
 								position:$scope.position, password:$scope.pwd, phone:$scope.pnumber }
 		$http({
 			method: 'POST',
@@ -77,12 +115,12 @@ a.controller("staffControl", function($scope, $http){
 		}, function (response) {
 			console.log(response.data, response.status);
 		});
-		// this.fname = '';
-		// this.lname = '';
-		// this.matno = '';
-		// this.department = '';
-		// this.pnumber = '';
-  //   	this.emailadd = '';
+		this.fname = '';
+		this.lname = '';
+		this.matno = '';
+		this.department = '';
+		this.pnumber = '';
+    	this.emailadd = '';
 	}
 	$scope.getStaffs = () => {
 		$http({
@@ -114,7 +152,7 @@ a.controller("staffControl", function($scope, $http){
 			console.log(response.data, response.status);
 		});
 	};
-	// $scope.getStaffs();
+	$scope.getStaffs();
 });
 // studentpage controller
 a.controller("studentControl", function($scope, $http){
@@ -234,9 +272,9 @@ a.controller("attControl",function($scope, $http, $timeout, $routeParams){
 		$http({
 			method: 'GET',
 			url: '../api-angular/getcourse.php',
-		}).then(function (response) {
+		}).then((response) => {
 			$scope.courseList = response.data;
-		}, function (response) {
+		}, (response) => {
 			console.log(response.data, response.status);
 		});
 	};
@@ -314,7 +352,7 @@ a.controller("attControl",function($scope, $http, $timeout, $routeParams){
 });
 
 //view Attendance Controller
-a.controller("viewAttControl",function($scope, $http){
+a.controller("viewAttControl",function($scope, $http, $window){
 	// $scope.getCourse = function(){
 	$http({
 		method: 'GET',
@@ -339,7 +377,7 @@ a.controller("viewAttControl",function($scope, $http){
 		});
 	}
 	$scope.printAttendance = () => {
-		alert('printed');
+		// $window.print(div.)
 	}
 });
 //messages Controller

@@ -1,45 +1,64 @@
 <main ng-controller="dashControl">
 	<div class="bg-secondary py-3 pl-3 mb-3">
-		<div class="text-white font-weight-bold">Dashboard</div>
+		<div class="text-white font-weight-bold ml-4">Dashboard</div>
 	</div>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-				<div class="jumbotron bg-light p-4">
-					Total Students
+			<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+				<div class="d-flex justify-content-between jumbotron bg-success text-white p-3">
+					<span class="font-weight-bold">Total Lecturers:</span>
+					<h1 class="font-weight-bold display-4">{{ staffList.length }}</h1>
 				</div>
 			</div>
-			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-				<div class="jumbotron bg-light p-4">
-					Next Course
+			<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+				<div class="d-flex justify-content-between jumbotron bg-primary text-white p-3">
+					<span class="font-weight-bold">Total Students:</span>
+					<h1 class="font-weight-bold display-4">{{ studentList.length }}</h1>
 				</div>
 			</div>
-
-			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-				<div class="jumbotron bg-light p-4">
-					Total
-				</div>
-			</div>
-			<div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-				<div class="jumbotron bg-light p-4">
-					Total
+			<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+				<div class="d-flex justify-content-between jumbotron text-white p-3" style="background-color: #ff0000;">
+					<span class="font-weight-bold">Total Courses</span>
+					<h1 class="font-weight-bold display-4">{{ courseList.length }}</h1>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-				<div class="jumbotron bg-light">
-					<canvas id="myChart"></canvas>
+				<div class="jumbotron bg-light p-2">
+					<!-- <canvas id="myChart"></canvas> -->
+					<h5 class="p-2 bg-secondary text-center text-uppercase text-white">Department Lecturers</h5>
+					<table class="table table-striped" border="1">
+						<thead>
+							<tr>
+								<th>SN</th>
+								<th>FULL NAME</th>
+								<th>POSITION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="x in staffList | filter:searchName | orderBy:'firstname' | limitTo:10">
+								<td>{{$index+1}}</td>
+								<td>{{x.firstname}} {{x.lastname}}</td>
+								<td>{{x.position}}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-				<div class="wow bounceInUp jumbotron bg-light">
-					<h1 class="display-5">Live</h1>
+				<div class="wow bounceInUp jumbotron bg-light p-3">
+					<h5 class="p-2 bg-secondary text-center text-uppercase text-white">Notifications</h5>
+					<div>
+						<ul ng-repeat="x in notificationsList">
+							<li>{{x}}</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 				<div class="jumbotron bg-light">
 					<h1 class="display-5">Info</h1>
@@ -50,7 +69,7 @@
 					<h1 class="display-5">Info</h1>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </main>
 <footer class="container-fluid">
