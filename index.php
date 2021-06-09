@@ -22,13 +22,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Student Attendance System</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="myStyle.css">
-
-	<link rel="stylesheet" type="text/css" href="../bootstrap/font/fontawesome-5/css/all.css">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="../bootstrap/wowjs/css/libs/animate.css">
-	<script rel="stylesheet" type="text/css" href="../bootstrap/wowjs/dist/wow.js"></script>
+
 	<!-- <base href="/Student-Attendance-System!" /> -->
 </head>
 <body ng-app="myApp" class="bg-light">
@@ -67,15 +67,15 @@
 		<ng-view></ng-view>
 	</div>
 
-	<script type="text/javascript" src="../bootstrap/js/jquery-3.2.1.js"></script>
-	<script type="text/javascript" src="../bootstrap/js/popper.js"></script>
-	<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
-	<script type="text/javascript" src="../bootstrap/js/angular.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script> -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script> -->
-	<script type="text/javascript" src="../bootstrap/angular-route/angular-route.js"></script>
-	<script type="text/javascript" src="myScript.js"></script>
-	<script type="text/javascript" src="myJScript.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js" 
+    integrity="sha512-Rd5Gf5A6chsunOJte+gKWyECMqkG8MgBYD1u80LOOJBfl6ka9CtatRrD4P0P5Q5V/z/ecvOCSYC8tLoWNrCpPg==" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<script type="text/javascript" src="./myScript.js"></script>
+	<script type="text/javascript" src="./myJScript.js"></script>
 </body>
 </html>
 <?php
