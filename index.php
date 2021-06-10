@@ -1,19 +1,19 @@
 <?php
-// session_start();
+session_start();
 
-	// require '../api-angular/connect.php';
-	// require '../api-angular/handler.php';
-	// $connect = connect();
+	require '../api-angular/connect.php';
+	require '../api-angular/handler.php';
+	$connect = connect();
 
-	// if(loggedIn()){
-	// 	$email = $_SESSION['email'];
+	if(loggedIn()){
+		$email = $_SESSION['email'];
 
-	// 	$query = mysqli_query($connect, "SELECT first_name, last_name, position FROM admin_tb JOIN admin_position_tb USING (id) WHERE email = '$email'");
-	// 	$result = mysqli_fetch_assoc($query);
+		$query = mysqli_query($connect, "SELECT first_name, last_name, position FROM admin_tb JOIN admin_position_tb USING (id) WHERE email = '$email'");
+		$result = mysqli_fetch_assoc($query);
 
-	// 	$firstname = $result['first_name'];
-	// 	$lastname =  $result['last_name'];
-	// 	$position =  $result['position'];
+		$firstname = $result['first_name'];
+		$lastname =  $result['last_name'];
+		$position =  $result['position'];
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +79,9 @@
 </body>
 </html>
 <?php
-// }
-// else {
-// 	$_SESSION['loginMsg'] = "Please Login first";
-// 	header("Location: homepage.php");
-// }
+}
+else {
+	$_SESSION['loginMsg'] = "Please Login first";
+	header("Location: homepage.php");
+}
 ?>
